@@ -1,0 +1,83 @@
+/* shop-styles.css */
+
+body {
+  background: url("https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0")
+    no-repeat center center fixed;
+  background-size: cover;
+  color: #6b5050;
+  font-family: "Georgia", serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: rgba(255, 248, 220, 0.9);
+  padding: 1rem;
+  border-bottom: 2px solid #d1bfa3;
+}
+
+nav a.nav-link {
+  color: #000000;
+  font-weight: bold;
+}
+
+nav a.nav-link:hover {
+  color: #352a1e;
+}
+
+main {
+  background-color: rgba(255, 255, 255, 0.92);
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.menu-section {
+  margin-bottom: 3rem;
+}
+
+.menu-section h3 {
+  border-bottom: 2px solid #d1bfa3;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  color: #533f39;
+}
+
+.card-custom {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 2px solid #d1bfa3;
+  border-radius: 10px;
+  padding: 1rem;
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.counter input.qty {
+  width: 60px;
+}
+
+footer {
+  background-color: rgba(255, 248, 220, 0.9);
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-top: 2px solid #d1bfa3;
+  color: #5c4422;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+}

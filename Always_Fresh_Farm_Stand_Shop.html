@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order Online - Always Fresh Farm Stand</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Always_Fresh_Farm_Stand_shop_Styles.css" />
+    <style>
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0")
+          no-repeat center center fixed;
+        background-size: cover;
+        opacity: 0.1;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container-fluid">
+      <div class="text-center py-3">
+        <h1 class="display-4">Always Fresh Farm Stand</h1>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light bg-secondary px-3">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="Always_Fresh_Farm_Stand_Home.html"
+            >Home</a
+          >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNav"
+          >
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="Always_Fresh_Farm_Stand_Shop.html"
+                  >Shop</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Always_Fresh_Farm_Stand_About_us.html"
+                  >About Us</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Always_Fresh_Farm_Stand_contact.html"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container my-5">
+      <h2 class="text-center mb-4">Order Online</h2>
+
+      <div id="orderSections"></div>
+
+      <div class="text-end mt-4">
+        <h4>Total: $<span id="totalPrice">0.00</span></h4>
+        <a href="#" onclick="prepareCheckout()" class="btn btn-success mt-3"
+          >Checkout</a
+        >
+      </div>
+    </main>
+
+    <footer class="text-center py-4">
+      <p>&copy; 2025 Always Fresh Farm Stand. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const menus = {
+        "Main Vegetables": [
+          ["Tomatoes", 1.99],
+          ["Bell Peppers", 2.49],
+          ["Zucchini", 1.79],
+          ["Cucumbers", 1.5],
+          ["Green Beans", 2.29],
+          ["Corn on the Cob", 0.99],
+          ["Eggplant", 2.1],
+          ["Okra", 2.0],
+          ["Squash", 1.9],
+          ["Sweet Peas", 2.5],
+        ],
+        "Root Vegetables & Herbs": [
+          ["Carrots", 1.2],
+          ["Beets", 1.5],
+          ["Radishes", 1.1],
+          ["Turnips", 1.6],
+          ["Garlic", 0.6],
+          ["Onions", 1.0],
+          ["Potatoes", 1.4],
+          ["Ginger Root", 2.3],
+          ["Basil Bunch", 1.0],
+          ["Cilantro Bunch", 1.0],
+        ],
+        "Dairy Products": [
+          ["Whole Milk (1 gal)", 3.5],
+          ["Butter (1 lb)", 2.99],
+          ["Farm Fresh Eggs (dozen)", 3.2],
+          ["Greek Yogurt (qt)", 4.0],
+          ["Cheddar Cheese (block)", 4.25],
+          ["Goat Cheese", 5.0],
+          ["Sour Cream (16 oz)", 2.2],
+          ["Cream Cheese", 2.5],
+          ["Chocolate Milk (qt)", 2.8],
+          ["Cottage Cheese", 2.9],
+        ],
+        "Leafy Greens": [
+          ["Spinach Bunch", 1.75],
+          ["Kale Bunch", 1.8],
+          ["Romaine Lettuce", 2.0],
+          ["Spring Mix (bag)", 2.5],
+          ["Arugula", 2.25],
+          ["Mustard Greens", 1.95],
+          ["Collard Greens", 1.85],
+          ["Red Leaf Lettuce", 2.1],
+          ["Butterhead Lettuce", 2.4],
+          ["Chard Bunch", 1.9],
+        ],
+      };
+
+      let total = 0;
+
+      const orderSections = document.getElementById("orderSections");
+      const totalPriceEl = document.getElementById("totalPrice");
+
+      function updateTotal() {
+        total = 0;
+        document.querySelectorAll(".item-row").forEach((row) => {
+          const qtyInput = row.querySelector(".qty");
+          const qty = parseInt(qtyInput?.value) || 0;
+          const price = parseFloat(row.dataset.price);
+          if (!isNaN(qty) && !isNaN(price)) {
+            total += qty * price;
+          }
+        });
+        totalPriceEl.textContent = total.toFixed(2);
+      }
+
+      function prepareCheckout() {
+        const items = [];
+        let total = 0;
+
+        document.querySelectorAll(".item-row").forEach((row) => {
+          const qtyInput = row.querySelector(".qty");
+          const qty = parseInt(qtyInput?.value) || 0;
+          const name = row.querySelector("strong")?.textContent;
+          const price = parseFloat(row.dataset.price);
+
+          if (qty > 0) {
+            items.push({ name, qty, price });
+            total += qty * price;
+          }
+        });
+
+        localStorage.setItem("checkoutItems", JSON.stringify(items));
+        localStorage.setItem("checkoutTotal", total.toFixed(2));
+        window.location.href = "Always_Fresh_Farm_Stand_Chekout.html";
+      }
+
+      for (const [section, items] of Object.entries(menus)) {
+        const sectionDiv = document.createElement("div");
+        sectionDiv.className = "menu-section";
+
+        const heading = document.createElement("h3");
+        heading.textContent = section;
+        sectionDiv.appendChild(heading);
+
+        const rowDiv = document.createElement("div");
+        rowDiv.className = "row g-3";
+
+        items.forEach(([name, price]) => {
+          const colDiv = document.createElement("div");
+          colDiv.className = "col-12 col-sm-6 col-md-4 border";
+
+          const cardDiv = document.createElement("div");
+          cardDiv.className = "card-custom item-row";
+          cardDiv.dataset.price = price;
+
+          cardDiv.innerHTML = `
+            <div>
+              <strong>${name}</strong><br />
+              <small class="text-muted">$${price.toFixed(2)}</small>
+            </div>
+            <div class="counter mt-3 d-flex align-items-center justify-content-center gap-2">
+              <button class="btn btn-sm btn-outline-secondary" onclick="this.nextElementSibling.stepDown(); this.nextElementSibling.dispatchEvent(new Event('input'))">-</button>
+              <input type="number" class="qty form-control form-control-sm text-center" value="0" min="0" oninput="updateTotal()">
+              <button class="btn btn-sm btn-outline-secondary" onclick="this.previousElementSibling.stepUp(); this.previousElementSibling.dispatchEvent(new Event('input'))">+</button>
+            </div>
+          `;
+
+          colDiv.appendChild(cardDiv);
+          rowDiv.appendChild(colDiv);
+        });
+
+        sectionDiv.appendChild(rowDiv);
+        orderSections.appendChild(sectionDiv);
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      defer
+    ></script>
+  </body>
+</html>

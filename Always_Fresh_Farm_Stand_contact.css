@@ -1,0 +1,66 @@
+body {
+  background: url("https://images.unsplash.com/photo-1550989460-0adf9ea622e2?w=1600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0")
+    no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Georgia", serif;
+  color: #6b5050;
+}
+
+header {
+  background-color: rgba(255, 248, 220, 0.9);
+  padding: 1rem;
+}
+
+nav a.nav-link {
+  color: #000000;
+  font-weight: bold;
+}
+
+nav a.nav-link:hover {
+  color: #533f39;
+}
+
+.contact-section {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-weight: bold;
+}
+
+input,
+textarea {
+  background-color: #fff8dc;
+  border: 1px solid #c0a16b;
+  color: #533f39;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #a07c52;
+  box-shadow: 0 0 5px rgba(160, 124, 82, 0.5);
+}
+
+button {
+  background-color: #fff8dc;
+  color: #533f39;
+  border: 1px solid #a07c52;
+}
+
+button:hover {
+  background-color: #f1e3c1;
+  color: #3e2e25;
+}
+
+footer {
+  background-color: rgba(255, 248, 220, 0.9);
+  color: #533f39;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+}
