@@ -53,7 +53,7 @@ Always_Fresh_Farm_Stand/
 
 1. Clone the repository or copy the project files to your local machine.
 2. Ensure all HTML and CSS files are in the correct structure as shown above.
-3. Open `Always_Fresh_Farm_Stand_Shop.html` in a browser to start shopping.
+3. Open `Always_Fresh_Farm_Stand_home.html` in a browser to start shopping.
 4. The checkout page will reflect your order once you proceed via the Checkout button.
 
 ## Notes
