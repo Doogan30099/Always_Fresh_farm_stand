@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="Always_Fresh_Farm_Stand_shop_Styles.css" />
+    <!--This is the only way to get the background to show-->
     <style>
       body::before {
         content: "";
@@ -177,7 +178,7 @@
 
         localStorage.setItem("checkoutItems", JSON.stringify(items));
         localStorage.setItem("checkoutTotal", total.toFixed(2));
-        window.location.href = "Always_Fresh_Farm_Stand_Chekout.html";
+        window.location.href = "Always_Fresh_Farm_Stand_Checkout.html";
       }
 
       for (const [section, items] of Object.entries(menus)) {
